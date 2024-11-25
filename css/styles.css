@@ -1,0 +1,37 @@
+/*Accueil*/
+.background-image{
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;  
+    max-height: 800px;
+    height: 100vh;
+}
+
+.text-right{
+    display: flex;
+    justify-content: end;
+}
+
+#login{
+    margin-right: 5px;
+}
+
+/*Connexion et Inscrption*/
+.connexionContainer{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url(images/apparte.jpg);
+    background-size: cover;
+}
+form{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 5px 3px 10px #333;
+    padding: 20px;
+    border-radius: 5px;
+    max-width: 500px;
+    background-color:white;
+}
