@@ -30,10 +30,8 @@
     </div>
 
     <!--Image d'Accueil-->
-    <div class="background-image d-flex justify-content-center align-items-center container-fluid rounded" style="background-image: url(css/images/bg2.jpg);" id="diapo">
-        <div id="text-bg" class="animate__animated animate__fadeInUp bg-light opacity-50 p-2">
-            <h1 class="text-center text-dark m-2">TROUVER L'HABITATION DE VOS REVES</h1>
-        </div>
+    <div  id="diapo">
+        <!--ici s'affichera le diaporama d'accueil-->
     </div>
 
     <!--Section Achat-->
@@ -111,21 +109,21 @@
     
         //les contenus de la diapositive
         const containDiapo1 = `
-        <div class="background-image d-flex justify-content-center align-items-center container-fluid rounded " style="background-image: url(css/images/bg2.jpg);" id="diapo">
+        <div class="background-image d-flex justify-content-center align-items-center container-fluid " style="background-image: url(css/images/bg2.jpg);" id="diapo">
             <div id="text-bg" class="animate__animated animate__fadeInUp bg-light opacity-50 p-2">
                 <h1 class="text-center text-dark m-2">TROUVER L'HABITATION DE VOS REVES</h1>
             </div>
         </div>`;
     
         const containDiapo2 = `
-         <div class="background-image d-flex justify-content-center align-items-center container-fluid rounded " style="background-image: url(css/images/maison.jpg);" id="diapo">
-            <div id="text-bg" class="animate__animated animate__fadeInUp bg-light opacity-50 p-2">
+         <div class="background-image d-flex justify-content-center align-items-center container-fluid" style="background-image: url(css/images/maison.jpg);" id="diapo">
+            <div id="text-bg" class="animate__animated animate__fadeInUp bg-light opacity-50 ">
                 <h1 class="text-center m-2">METTER VOTRE BIEN EN LOCATION FACILEMENT</h1>
             </div>
         </div>`;
     
         const containDiapo3 = `
-         <div class="background-image d-flex justify-content-center align-items-center container-fluid rounded " style="background-image: url(css/images/apparte.jpg);" id="diapo">
+         <div class="background-image d-flex justify-content-center align-items-center container-fluid" style="background-image: url(css/images/apparte.jpg);" id="diapo">
             <div id="text-bg" class="animate__animated animate__fadeInUp bg-light opacity-50 p-2">
                 <h1 class="text-center text-dark m-2">VOTRE APPARTEMENT IDEAL A PORTER DE MAIN</h1>
             </div>
@@ -164,7 +162,8 @@
                 animateDiapo();
             }, 3900)
             }
-            animateDiapo()
+            
+            animateDiapo() //l'appel de la fonction
         })
     
         </script>
