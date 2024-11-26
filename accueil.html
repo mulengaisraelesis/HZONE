@@ -5,14 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Accueil</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/> <!--animated.CSS-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!--font awesome-->
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script> <!--Jquery-->
+
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="icon" href="css/images/HZONE.png">
 </head>
 <body>
   <div class="container-fluid">
     <!-- Nav tabs -->
-   <div class="row d-flex flex-row ">
+   <div class="row d-flex flex-row">
     <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="m-2"><span class="h1 fs-3 w-100 fw-bold w-100"><span class="text-primary">H</span>ZONE</span></li>
       <li class="nav-item" role="presentation">
@@ -31,8 +33,71 @@
     <div class="tab-content" id="myTabContent">
 
       <!--Les annonces en ligne-->
+
+         
       <div class="tab-pane fade show active container" id="annonces" role="tabpanel" aria-labelledby="annonces-tab">
-        <p>Contenu de l'onglet Annonces.</p>
+         <!--la barre de recherche et filtre-->
+        <div class="container-fluid mt-3 ">
+          <div class="row md-3">
+            <div class="col-sm-6">
+              <input class="form-control mb-3" type="text" id="searchInput" placeholder="Rechercher...">
+            </div>
+            <div class="col-sm-3">
+              <select class="form-select mb-3" id="filterSelect">
+                <option value="">Tous les filtres</option>
+                <option value="option1">Filtre 1</option>
+                <option value="option2">Filtre 2</option>
+                <option value="option3">Filtre 3</option>
+              </select>
+            </div>
+            <div class="col-sm-3">
+              <button class="btn btn-primary w-100" id="searchButton">Rechercher</button>
+            </div>
+          </div>
+      
+          <div id="resultContainer">
+            <!-- Résultats de la recherche seront affichés ici -->
+          </div>
+        </div>
+
+        <!--Affichage des annonces-->
+        <div class="container p-4">
+          <!--Modèle annonces des ventes-->
+          <div class="row bg-light container shadow-lg mb-3 pt-4 pb-4 rounded">
+            <!--l'image-->
+            <div class="col-md-6 mb-3">
+              <img src="css/images/maison vacance.jpg" alt="" class="image-responsive w-100">
+            </div>
+            <!--la description-->
+            <div class="col-md-6 d-flex  justify-content-center flex-column">
+              <div class="row">
+                  <h3 id="intitulé" class="text-decoration-underline">Maison à vendre</h3>
+                <p id="description">
+                  Bienvenue dans cette charmante maison de trois chambres située au cœur d'un quartier paisible et convivial.
+                  Cette maison, parfaitement entretenue, offre un cadre de vie confortable et pratique, idéal pour une famille ou un couple cherchant à s'installer dans un environnement agréable.
+                </p>
+
+                <p id="addresse" class="fw-bold">123 Rue des Fleurs, 75012 Paris, France</p>
+              </div>
+            <div class="row pt-3">
+              <div class="col-9">
+                <h3 id="prix" class="text-danger fw-bold">120.000$</h3>
+             </div>
+             <div class="col-3 d-flex align-items-center justify-content-center">
+               <button id="likeButton" class="border-0 bg-light not-liked">
+                <i class="far fa-heart text-black fa-3x" id="likeButtonIcon"></i>
+              </button>
+             </div>
+            </div>
+              <a href="#">En savoir plus...</a>
+        
+            </div>
+          </div>
+
+
+          <!--Modèle annonces de location-->
+          <div class="row"></div>
+        </div>
       </div>
 
       <!--Mettre en ligne une annonces-->
@@ -80,8 +145,33 @@
     const options = document.getElementById("options");
     const optionLocation = document.getElementById("optionLocation");
     const divOptionLocation = document.getElementById("divOptionLocation");
+    const likeButton = document.getElementById("likeButton");
+    const likeButtonIcon = document.getElementById("likeButtonIcon")
+
 
     //definition des fonctions
+
+    const likeOrUnlike = ()=>{
+      likeButtonIcon.addEventListener('click', function(){
+        let isLiked = likeButton.classList.contains("not-liked");
+        if(isLiked){
+        likeButton.classList.remove("not-liked");
+        likeButton.classList.add('liked');
+        likeButtonIcon.classList.remove("far", 'text-black');
+        likeButtonIcon.classList.add("fas", "text-danger");
+      }else{
+        likeButton.classList.remove('liked');
+        likeButton.classList.add("not-liked");
+        likeButtonIcon.classList.remove("fas", "text-danger");
+        likeButtonIcon.classList.add("far", 'text-black');
+      }
+      }
+        
+      )
+    }
+
+    likeOrUnlike()
+
     const formVente = () => {
       formPublication.innerHTML =`<div class="container mt-5"> 
             <h2>Formulaire de Mise en Vente</h2> 
@@ -227,7 +317,7 @@
     formPublication.innerHTML = ``
     if(options.value==="vendre"){
       formVente()
-      $(document).ready(function() { setTimeout(function() { $("#formPublication").addClass("animate__animated animate__fadeInUp"); }, 10);  }); //afficher le formulaire de vente
+      $(document).ready(function() { setTimeout(function() { $("#formPublication").addClass("animate__animated animate__fadeInUp"); }, 1);  }); //afficher le formulaire de vente
     }else if(options.value==="louer"){
       divOptionLocation.style.display = "block";
       $(document).ready(function() { setTimeout(function() { $("#optionLocation").addClass("animate__animated animate__fadeInUp"); }, 10);  }); //affiche le formulaire du bien de location
@@ -239,6 +329,21 @@
       })
     }
    })
+
+   
+
+   $(document).ready(function() {
+      $("#searchButton").click(function() {
+        const searchTerm = $("#searchInput").val();
+        const filterOption = $("#filterSelect").val();
+
+        // Logique pour filtrer les résultats
+        console.log("Recherche:", searchTerm, "Filtre:", filterOption);
+
+        // Affiche les résultats filtrés
+        $("#resultContainer").html(`<p>Résultats pour: "${searchTerm}" avec le filtre: "${filterOption}"</p>`);
+      });
+    });
   </script>
 </body>
 </html>
