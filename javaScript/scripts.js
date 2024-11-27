@@ -33,7 +33,7 @@
     const  shareLink = () => {
       whatsappShare.addEventListener('click', function() {
       const url = window.location.href; // URL actuelle de la page 
-      const text = "Check this out: "; 
+      const text = "Venez visiter Hzone et Trouver l'habitation de vos rêves: "; 
       const message = `${text}${url}`; 
       const whatsappURL = `https://wa.me/?text=${encodeURIComponent(message)}`;
       window.open(whatsappURL, '_blank'); });
