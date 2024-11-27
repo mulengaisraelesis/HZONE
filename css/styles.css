@@ -1,9 +1,14 @@
-/*Accueil*/
+/*Index*/
 .background-image{
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;  
     height: 100vh;
+}
+
+#diapo{
+    padding:0;
+
 }
 
 .text-right{
@@ -35,7 +40,6 @@ form{
     background-color:white;
 }
 
-#diapo{
-    padding:0;
-
+.image-annonce{
+    height: 500px;
 }

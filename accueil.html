@@ -6,8 +6,6 @@
   <title>Accueil</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/> <!--animated.CSS-->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!--font awesome-->
-  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script> <!--Jquery-->
-
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="icon" href="css/images/HZONE.png">
 </head>
@@ -31,10 +29,7 @@
 
     <!-- Tab panes -->
     <div class="tab-content" id="myTabContent">
-
       <!--Les annonces en ligne-->
-
-         
       <div class="tab-pane fade show active container p-0" id="annonces" role="tabpanel" aria-labelledby="annonces-tab">
          <!--la barre de recherche et filtre-->
         <div class="container-fluid mt-3 ">
@@ -61,7 +56,7 @@
         </div>
 
         <!--Affichage des annonces-->
-        <div class="container-fluid mt-5  pl-2 pt-0 pb-0 pr-0">
+        <div class="container mt-5  p-0">
           <!--Modèle annonces des ventes-->
           <div class="container-fluid container-annonces w-100 p-0 d-flex align-items-center flex-column">
             <div class="row bg-light container p-0 shadow-lg mb-3 pt-4 pb-4 rounded">
@@ -81,16 +76,21 @@
                   <p id="addresse" class="fw-bold">123 Rue des Fleurs, 75012 Paris, France</p>
                 </div>
               <div class="row pt-3">
-                <div class="col-9">
+                <div class="col-8">
                   <h3 id="prix" class="text-danger fw-bold">120.000$</h3>
                </div>
-               <div class="col-3 d-flex align-items-center justify-content-center">
+               <div class="col-4 d-flex align-items-center justify-content-center">
                  <button id="likeButton" class="border-0 bg-light not-liked">
                   <i class="far fa-heart text-black fa-3x" id="likeButtonIcon"></i>
                 </button>
+                <div class="container text-center"> ;
+                  <a href="#" id="whatsapp-share" class="btn btn-success"> 
+                    <i class="fab fa-whatsapp fa-2x"></i>
+                  </a>
+                </div>
                </div>
               </div>
-                <a href="#">En savoir plus...</a>
+                <a href="annonces.html">En savoir plus...</a>
           
               </div>
             </div>
@@ -140,19 +140,25 @@
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script> <!--le script bootstrap-->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script> <!--Jquery-->
+
   <script>
 
-    //description des variables
+    //affectation des variables
     const formPublication = document.getElementById("formPublication");
     const options = document.getElementById("options");
     const optionLocation = document.getElementById("optionLocation");
     const divOptionLocation = document.getElementById("divOptionLocation");
     const likeButton = document.getElementById("likeButton");
     const likeButtonIcon = document.getElementById("likeButtonIcon")
+    document.getElementById('whatsapp-share').addEventListener('click', function() { const url = window.location.href; // URL actuelle de la page 
+    const text = "Check this out: "; 
+    const message = `${text}${url}`; 
+    const whatsappURL = `https://wa.me/?text=${encodeURIComponent(message)}`;
+    window.open(whatsappURL, '_blank'); });
 
 
     //definition des fonctions
-
     const likeOrUnlike = ()=>{
       likeButtonIcon.addEventListener('click', function(){
         let isLiked = likeButton.classList.contains("not-liked");
@@ -167,12 +173,10 @@
         likeButtonIcon.classList.remove("fas", "text-danger");
         likeButtonIcon.classList.add("far", 'text-black');
       }
-      }
-        
-      )
+      })
     }
 
-    likeOrUnlike()
+    
 
     const formVente = () => {
       formPublication.innerHTML =`<div class="container mt-5"> 
@@ -346,6 +350,7 @@
         $("#resultContainer").html(`<p>Résultats pour: "${searchTerm}" avec le filtre: "${filterOption}"</p>`);
       });
     });
+    likeOrUnlike()
   </script>
 </body>
 </html>
