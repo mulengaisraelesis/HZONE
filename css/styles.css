@@ -41,11 +41,19 @@ form{
 }
 
 .image-annonce{
-    height: 500px;
+    
 }
 
 .container-publier{
     background-color: red;
     display: flex;
     justify-content: center;
+}
+
+.container-icon{
+    background-color: red;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
