@@ -43,3 +43,9 @@ form{
 .image-annonce{
     height: 500px;
 }
+
+.container-publier{
+    background-color: red;
+    display: flex;
+    justify-content: center;
+}

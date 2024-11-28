@@ -7,6 +7,8 @@
     const likeButton = document.getElementById("likeButton");
     const likeButtonIcon = document.getElementById("likeButtonIcon")
     const whatsappShare = document.getElementById("whatsapp-share");
+    const copyButton = document.getElementById("copyButton");
+    const messageCopyButton = document.getElementById("messageCopyButton");
 
     
 
@@ -38,6 +40,29 @@
       const whatsappURL = `https://wa.me/?text=${encodeURIComponent(message)}`;
       window.open(whatsappURL, '_blank'); });
     }
+
+    const copyLink = () => {
+      const displayMessage = (message) => {
+        $("#messageCopyButton").addClass("animate__animated animate__fadeInUp");
+        messageCopyButton.textContent = message;
+        // Effacer le message après 3 secondes
+        setTimeout(() => {
+          $("#messageCopyButton").removeClass("animate__animated animate__fadeInUp");
+          messageCopyButton.textContent = ""
+        }, 3000);
+      };
+    
+      copyButton.addEventListener('click', function() {
+        const url = window.location.href;
+        navigator.clipboard.writeText(url).then(() => {
+          displayMessage("Lien copié!");
+        }).catch(err => {
+          console.error("Echec de la copie: ", err);
+          displayMessage("Echec de la copie.");
+        });
+      });
+    };
+    
 
     
     // formulaire pour un bien en vente
@@ -222,3 +247,4 @@
     showFormPublication()
     likeOrUnlike()
     shareLink()
+    copyLink()
