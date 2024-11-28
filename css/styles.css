@@ -40,9 +40,7 @@ form{
     background-color:white;
 }
 
-.image-annonce{
-    
-}
+
 
 .container-publier{
     background-color: red;
@@ -56,4 +54,11 @@ form{
     align-items: center;
     justify-content: center;
     flex-direction: column;
+}
+
+.buttonAccueil{
+    height: 50px;
+    width: 5Opx;
+    display: flex;
+    align-items: center;
 }
